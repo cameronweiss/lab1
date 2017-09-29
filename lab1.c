@@ -24,14 +24,18 @@ int getNumberOfTagBits(int lengthOfAddress, int blockOffset, int setIndex);
 
 
 
-int main(void)
-{
+int main(int argc, char* argv[])
+{	
     FILE *fp;
     int i;
-    unsigned int retVal;
+    unsigned int retVal, K, L, C;
     // open trace file for reading
-    
-    fp = fopen("sampleTrace.txt", "r");
+    // K, L, and C are assigned to the 3 arguements entered
+    K = atoi(argv[1]);
+    L = atoi(argv[2]);
+    C = atoi(argv[3]);
+    //sample trace should be used as 4th arguement
+    fp = fopen(argv[4], "r");
     
     while((retVal = fscanf(fp,"%x",&i))!=EOF)
     {
@@ -52,8 +56,9 @@ int main(void)
 
     }
     fclose(fp);
-    
-    
+    //proves K L and C are assigned correctly
+    printf("K=%x, L= %x, C=%x", K, L, C);
+     
     
     
 }
