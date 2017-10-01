@@ -44,6 +44,13 @@ int main(int argc, char* argv[])
     numOffsetBits= offsetLength(L);
     numIndexBits = setIndexLength(numberOfSets);
     
+    //initialize arrays using malloc
+    **tagArray = malloc(numberOfSets*sizeOf(int*));
+    for(int x = 0; x<numberOfSets; x++)
+    {
+	    tagArray[x] = malloc(sizeof(int*)*K);
+    }
+
     while((retVal = fscanf(fp,"%x",&i))!=EOF)
     {
         // read 1 line of trace file
